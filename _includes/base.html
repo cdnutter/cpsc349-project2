@@ -6,8 +6,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{{ '/styles/tailwind.css' | url }}">
         <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
+    
+        {% if color_keyword == "black"%}
+            <style>
+                body{
+                    color: white;
+                }
+            </style>
+        {% endif %}
     </head>
-    <body>
+    <body style="background-color: {{ color_keyword }};">
+
+        
         {{ content }}
+
     </body>
 </html>
