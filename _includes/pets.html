@@ -3,14 +3,39 @@ site: Pet Photos
 layout: base
 ---
     <header>
+    
         <h1 id="title">{{ site }}
             <br>by Axolotl</h1>
-            <h2><a href="/">Home</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="/about">About</a>&nbsp;&nbsp;</a>
-            </h2>
+            <h2><a href="/">Home</a></h2><br>
+            <h2><a href="/about">About</a></h2>
     </header>
-           
-
-{{ content }}
+<body style="background-color: {{ color_keyword }};">
+    
+    {{ content }}
+    <div class="data">
+    {% unless page.url == '/' %}
+        
+    {% if page.url != '/about/' %}   			
+        <b>Name</b>: {{ photographer_first_name }} {{ photographer_last_name }}
+            &emsp;
+        <b>Views</b>: {{ stats_views }}
+            <br>
+        <b>Size</b>: {{ photo_height }} x {{ photo_width }}
+        &emsp;		
+        <b>Downloads</b>: {{ stats_downloads }}
+        <br>
+        {% if photo_location_latitude == '' %}
+        Map Data Unavailable
+        {% else %}
+        <center>
+        <img id="static_map" src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/{{photo_location_longitude}},{{photo_location_latitude}},14/500x300?access_token=pk.eyJ1Ijoic2NvdHRwYXJrNDQiLCJhIjoiY2tyNXNubThsMzhocTJvdDk5a3ZsMGFhMCJ9.gSYg1ze4cd9dItEiNjfpRg">
+        {% endif %}
+         </center>
+        <br>
+        <i>{{ ai_description }}</i>
+{% endif %}
+{% endunless %}
+</div>
 
 <ul class="move">
     {% for photo in collections.photos %}
@@ -20,5 +45,6 @@ layout: base
                 by {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }}
             </a>
         </li>
-        {% endfor %}
+    {% endfor %}
 </ul>
+</body>
