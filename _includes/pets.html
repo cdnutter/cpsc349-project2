@@ -2,6 +2,11 @@
 site: Pet Photos
 layout: base
 ---
+
+<div class="grid-container">
+
+<div class="item1">
+
 <h1>{{ site }}</h1>
 
 {% unless page.url == '/' %}
@@ -10,7 +15,9 @@ layout: base
 
 {{ content }}
 
-<div>
+</div>
+
+<div class="item2">
 
   {% unless page.url == '/' %}
 
@@ -40,6 +47,8 @@ layout: base
 
 </div>
 
+<div class="item3">
+
 <ul>
     {% for photo in collections.photos %}
         <li>
@@ -50,3 +59,7 @@ layout: base
         </li>
     {% endfor %}
 </ul>
+
+</div>
+
+</div>
