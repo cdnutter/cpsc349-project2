@@ -2,15 +2,17 @@
 site: Pet Photos
 layout: base
 ---
-<h1>{{ site }}</h1>
-
-{% unless page.url == '/' %}
-    <a href="{{ '/' | url }}">Home</a>
-{% endunless %}
+    <header>
+        <h1 id="title">{{ site }}
+            <br>by Axolotl</h1>
+            <h2><a href="/">Home</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="/about">About</a>&nbsp;&nbsp;</a>
+            </h2>
+    </header>
+           
 
 {{ content }}
 
-<ul>
+<ul class="move">
     {% for photo in collections.photos %}
         <li>
             <a href="{{ photo.url | url }}">
@@ -18,5 +20,5 @@ layout: base
                 by {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }}
             </a>
         </li>
-    {% endfor %}
+        {% endfor %}
 </ul>
