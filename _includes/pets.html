@@ -10,6 +10,36 @@ layout: base
 
 {{ content }}
 
+<div>
+
+  {% unless page.url == '/' %}
+
+    <center>
+        <br>
+  {% if page.url != '/about/' %}
+      <b>Name</b>: {{ photographer_first_name }} {{ photographer_last_name }}
+        &emsp;
+      <b>Views</b>: {{ stats_views }}
+        <br>
+      <b>Size</b>: {{ photo_height }} x {{ photo_width }}
+            &emsp;
+      <b>Downloads</b>: {{ stats_downloads }}
+        <br><br>
+          {% if photo_location_latitude == '' %}
+              Map Data Unavailable
+          {% else %}
+              <img id="static_map" src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/{{photo_location_longitude}},{{photo_location_latitude}},14/500x300?access_token=pk.eyJ1Ijoic2NvdHRwYXJrNDQiLCJhIjoiY2tyNXNubThsMzhocTJvdDk5a3ZsMGFhMCJ9.gSYg1ze4cd9dItEiNjfpRg">
+          {% endif %}
+            <br><br>
+          <small><i>{{ ai_description }}</i></small>
+  {% endif %}
+  </center>
+
+  <hr>
+  {% endunless %}
+
+</div>
+
 <ul>
     {% for photo in collections.photos %}
         <li>
