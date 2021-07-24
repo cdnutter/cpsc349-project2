@@ -12,9 +12,9 @@ layout: base
 
     <i>A collection of various colorful pets</i>
 		<br><br>
-	<div loading="lazy" class="grid md:grid-flow-row grid-cols-6 grid-row-3 gap-2">
+	<div loading="lazy" class="wrap_left_pic_cont">
 	{% for photo in collections.photos %}
-		<article class="bg-white object-cover overflow-hidden rounded shadow">
+		<article class="wrap_left_pictures">
 			<a href="{{ photo.url | url }}">
 				<img class="object-cover w-auto h-64" src="{{ photo.data.photo_image_url }}" alt="uh oh"/>
 			</a>
@@ -29,10 +29,10 @@ layout: base
 			<img class="block" src="{{ photo_image_url }}" alt="uh oh"/>
 			<div class=" px-5 py-4">
 				<h2 class="text-lg font-bold">{{ photographer_first_name }} {{ photographer_last_name }}</h2>
-				<p class="mt-1">{{ stats_views }}</p>
-				<p class="mt-2">{{ stats_downloads }}</p>
+				<p class="mt-1">views: {{ stats_views }}</p>
+				<p class="mt-2">downloads: {{ stats_downloads }}</p>
 			</div>
-			<p class=" mt-3 border-t text-sm text-center italic">
+			<p class="wrap_right_pic_desc">
 				{{ ai_description }}
 			</p>
 		</article>

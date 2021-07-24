@@ -6,7 +6,18 @@
 @layer components {
 
     .custom-tailwind {
-        @apply text-white bg-blue-500
+        @apply text-white bg-blue-500;
     }
 
+    .wrap_left_pic_cont {
+        @apply grid md:grid-flow-row grid-cols-6 grid-rows-3 gap-2;
+    }
+
+    .wrap_left_pictures{
+        @apply bg-white object-cover overflow-hidden rounded shadow;
+    }
+
+    .wrap_right_pic_desc{
+        @apply mt-3 border-t text-sm text-center italic;
+    }
 }
