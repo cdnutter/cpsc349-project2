@@ -1,36 +1,26 @@
 ---
 site: Pet Photos
 layout: base
-
-pagination:
-    data: collections.photos
-    size: 10
-	alias: petPhotos
 ---
 <div class="wrap_left">
 	<h1>{{ site }}</h1>
+
     {% unless page.url == '/' %}
-        <a href="{{ '/' | url }}">Home</a>&nbsp;&nbsp;<a href="{{ '/about' | url }}">About</a>
-    {% endunless %}
+        <a href="{{ '/' | url }}">Home</a>&nbsp;&nbsp;
+			<br><br>
+	{% endunless %}
+
+    <i>A collection of various colorful pets</i>
 		<br><br>
-	<div class="grid md:grid-flow-row grid-cols-6 grid-row-3 gap-2">
-	{% for photo in petPhotos %}
-		<article class="bg-white overflow-hidden rounded shadow">
+	<div loading="lazy" class="grid md:grid-flow-row grid-cols-6 grid-row-3 gap-2">
+	{% for photo in collections.photos %}
+		<article class="bg-white object-cover overflow-hidden rounded shadow">
 			<a href="{{ photo.url | url }}">
 				<img class="object-cover w-auto h-64" src="{{ photo.data.photo_image_url }}" alt="uh oh"/>
 			</a>
 		</article>
 	{% endfor %}
 	</div>
-	<nav>
-	{% if pagination.href.previous %}<a href="{{pagination.href.previous | url }}">Previous</a>
-	{% else %}<span></span>{% endif %}
-
-	{{ pagination.pageNumber | plus: 1 }}
-
-	{% if pagination.href.next %}<a href="{{pagination.href.next | url }}">Next</a>
-	{% else %}<span></span>{% endif %}
-	</nav>
 </div>
 
 {% if page.url != '/about/' %} {% if page.url != '/' %}
