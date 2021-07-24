@@ -1,58 +1,56 @@
 ---
 site: Pet Photos
 layout: base
+
+pagination:
+    data: collections.photos
+    size: 10
+	alias: petPhotos
 ---
-<div class="page_header">
+<div class="wrap_left">
 	<h1>{{ site }}</h1>
     {% unless page.url == '/' %}
-        <a href="{{ '/' | url }}">Home</a>
+        <a href="{{ '/' | url }}">Home</a>&nbsp;&nbsp;<a href="{{ '/about' | url }}">About</a>
     {% endunless %}
-		<br><center><hr style="width: 80%; opacity: 0.4;"></center>
-	
-	<div class="pet_photo">
-        	<small><i>More Pet Photos</i></small>
-    	<ul>
-        	{% for photo in collections.photos %}
-            	<li>
-                	<a href="{{ photo.url | url }}">
-                    	A {{ photo.data.photo_keyword }} photo
-                    	by {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }}
-                	</a>
-            	</li>
-        	{% endfor %}
-    	</ul>
+		<br><br>
+	<div class="grid md:grid-flow-row grid-cols-6 grid-row-3 gap-2">
+	{% for photo in petPhotos %}
+		<article class="bg-white overflow-hidden rounded shadow">
+			<a href="{{ photo.url | url }}">
+				<img class="object-cover w-auto h-64" src="{{ photo.data.photo_image_url }}" alt="uh oh"/>
+			</a>
+		</article>
+	{% endfor %}
 	</div>
+	<nav>
+	{% if pagination.href.previous %}<a href="{{pagination.href.previous | url }}">Previous</a>
+	{% else %}<span></span>{% endif %}
 
+	{{ pagination.pageNumber | plus: 1 }}
+
+	{% if pagination.href.next %}<a href="{{pagination.href.next | url }}">Next</a>
+	{% else %}<span></span>{% endif %}
+	</nav>
 </div>
 
 {% if page.url != '/about/' %} {% if page.url != '/' %}
-	<div class="picture_content">
-		<center>
-			{{ content }}
-				<br>
-			<div class="picture_info">
-				{% if page.url != '/about/' %}
-					<br>
-				<b>Name</b>: {{ photographer_first_name }} {{ photographer_last_name }}
-					&emsp;
-				<b>Views</b>: {{ stats_views }}
-					<br>
-				<b>Size</b>: {{ photo_height }} x {{ photo_width }}
-					&emsp;		
-				<b>Downloads</b>: {{ stats_downloads }}
-					<br><br>
-				{% if photo_location_latitude == '' %}
-					Map Data Unavailable
-				{% else %}
-					<img id="static_map" src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/{{photo_location_longitude}},{{photo_location_latitude}},14/500x300?access_token=pk.eyJ1Ijoic2NvdHRwYXJrNDQiLCJhIjoiY2tyNXNubThsMzhocTJvdDk5a3ZsMGFhMCJ9.gSYg1ze4cd9dItEiNjfpRg">
-				{% endif %}
-					<br><br>
-				<small><i>{{ ai_description }}</i></small>
-					<br><br>
-				{% endif %}
-			</div> 
-		</center>
+	<div class="wrap_right">
+		<article class="bg-white overflow-hidden rounded shadow">
+			<img class="block" src="{{ photo_image_url }}" alt="uh oh"/>
+			<div class=" px-5 py-4">
+				<h2 class="text-lg font-bold">{{ photographer_first_name }} {{ photographer_last_name }}</h2>
+				<p class="mt-1">{{ stats_views }}</p>
+				<p class="mt-2">{{ stats_downloads }}</p>
+			</div>
+			<p class=" mt-3 border-t text-sm text-center italic">
+				{{ ai_description }}
+			</p>
+		</article>
+			{% if photo_location_latitude == '' %}
+			{% else %}
+				<img id="static_map" src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/{{photo_location_longitude}},{{photo_location_latitude}},14/500x300?access_token=pk.eyJ1Ijoic2NvdHRwYXJrNDQiLCJhIjoiY2tyNXNubThsMzhocTJvdDk5a3ZsMGFhMCJ9.gSYg1ze4cd9dItEiNjfpRg">	
+				<br><br>
+			{% endif %}
+				<br><br>
 	</div>
 {% endif %} {% endif %}
-
-
