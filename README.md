@@ -1,4 +1,24 @@
-# Getting started with Project 2
+# Project 1 - Amogus
+
+![axolotl](https://assets.b8ta.com/uploads/company_asset/file/66610/eba6e6d6e93bff0e787dd2ea8337530e.png?width=720)
+
+## Group #4 - Axolotl
+
+1. Berkeley C. 
+2. Chris Nutter
+3. Jared Schneider
+4. Scott Park
+
+## Responsibilities
+
+1. Berkeley: Fancier HTML/~CSS~
+2. Chris: Hosting the web-server [here](https://cpsc349-project1.iamchrisama.com/), SSG / Eleventy implementation
+3. Jared: Fancier HTML/~CSS~
+4. Scott: SSG / Eleventy implementation
+
+---
+
+# Getting started with Project 1
 
 Install [q][1] in order to run SQL directly on TSV files:
 
@@ -7,22 +27,20 @@ $ sudo apt update
 $ sudo apt install python3-q-text-as-data
 ```
 
-[Fork][2] the GitHub [cpsc349-project2][3] repository, then [clone][4]
-your forked repository locally:
+Clone the GitHub repository:
 
 ```shell-session
-$ git clone https://github.com/USERNAME/cpsc349-project2.git
+$ git clone https://github.com/ProfAvery/cpsc349-project1.git
 ```
 
-Download the [Unsplash Lite dataset][5] and extract some pet photos:
+Download the [Unsplash Lite dataset][2] and extract some pet photos:
 
 ``` shell-session
-$ cd cpsc349-project2/unsplash
+$ cd cpsc349-project/unsplash
 $ make
 ```
 
-Install and start [Eleventy][6], [Browsersync][7], and the
-[Tailwind CLI][8]:
+Install and start the [Eleventy static site generator][3]:
 
 ```shell-session
 $ cd ..
@@ -31,32 +49,9 @@ $ npm start
 
 ```
 
-Open the [newly generated site][9].
-
-To publish the site, enable [GitHub Pages][10] for the repository,
-set the source for the site to the `/docs` folder in the main branch,
-then run the publish script, commit the update, and push the repository:
-
-```shell-session
-$ npm run publish
-$ git add docs
-$ git commit -m 'Publishing site updates'
-$ git push origin main
-
-```
-
-To check the deployment results, click the
-[Environments](../../deployments) link on the right-hand side of the
-page.
-
+Open the [newly generated site][4].
 
 [1]: https://harelba.github.io/q/
-[2]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-[3]: https://github.com/ProfAvery/cpsc349-project2
-[4]: https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository
-[5]: https://github.com/unsplash/datasets
-[6]: https://www.11ty.dev/
-[7]: https://browsersync.io/
-[8]: https://tailwindcss.com/docs/installation#using-tailwind-cli
-[9]: http://localhost:3000/
-[10]: https://guides.github.com/features/pages/
+[2]: https://github.com/unsplash/datasets
+[3]: https://www.11ty.dev/
+[4]: http://localhost:8080/
