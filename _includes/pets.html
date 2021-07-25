@@ -4,16 +4,16 @@ layout: base
 ---
     <header>
     
-        <h1 id="title">{{ site }}
-            <br>by Axolotl</h1>
-            <h2><a href="/">Home</a></h2><br>
-            <h2><a href="/about">About</a></h2>
+        <h1 id="title" class="text-4xl font-bold">{{ site }}</h1>
+            <h2 class=" font-semibold"><a href="/">Home</a></h2>
     </header>
-<body style="background-color: {{ color_keyword }};">
-    
-    {{ content }}
+<body style="background-color: #222222;" class="flex flex-col text-center text-white justify-center w-full">
+    <div class="w-full flex font-semibold">
+        {{ content }}
+    </div>
+   
     <div class="data">
-    {% unless page.url == '/' %}
+    {% unless page.url == '/cpsc349-project2/tailwind-default/' %}
         
     {% if page.url != '/about/' %}   			
         <b>Name</b>: {{ photographer_first_name }} {{ photographer_last_name }}
@@ -31,16 +31,21 @@ layout: base
         <img id="static_map" src="https://api.mapbox.com/styles/v1/mapbox/light-v10/static/{{photo_location_longitude}},{{photo_location_latitude}},14/500x300?access_token=pk.eyJ1Ijoic2NvdHRwYXJrNDQiLCJhIjoiY2tyNXNubThsMzhocTJvdDk5a3ZsMGFhMCJ9.gSYg1ze4cd9dItEiNjfpRg">
         {% endif %}
          </center>
-        <br>
+         <br>
+         <br>
         <i>{{ ai_description }}</i>
-{% endif %}
-{% endunless %}
+        <br>
+        <br>
+        <hr>
+
+    {% endif %}
+    {% endunless %}
 </div>
 
-<ul class="move">
+<ul class="move my-10">
     {% for photo in collections.photos %}
         <li>
-            <a href="{{ photo.url | url }}">
+            <a href="/cpsc349-project2/tailwind-default{{ photo.url | url }}">
                 A {{ photo.data.photo_keyword }} photo
                 by {{ photo.data.photographer_first_name}} {{ photo.data.photographer_last_name }}
             </a>

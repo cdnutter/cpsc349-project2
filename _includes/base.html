@@ -4,22 +4,20 @@
         <title>{{ title }} - {{ site }}</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{{ '/styles/tailwind.css' | url }}">
-        <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
+        <link rel="stylesheet" href="{{ '/cpsc349-project2/tailwind-default/styles/tailwind.css' | url }}">
+        <link rel="stylesheet" href="{{ '/cpsc349-project2/tailwind-default/styles/main.css' | url }}">
     </head>
-    <main class="container">
-        <body>
-            
-            {{ content }}
-
-        </body>
-        <footer>
-
-                     <p>Copyright © 2021, Axolotl</p>
-                     <a href="/about">About</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="/tags">Tags</a>
-
-            </footer>
+   
+    <body style="background-color: #222222;" class="flex flex-col text-center text-white justify-center w-full">
         
-    </main>
+        {{ content }}
+
+    </body>
+    <footer>
+                 <p>Copyright © 2021, Axolotl</p>
+                 <a href="/about">About</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="/tags">Tags</a>
+    </footer>
+    
+
 
 </html>
